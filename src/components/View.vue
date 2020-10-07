@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <img :src="src" style="width: 100%; height: 100%">
+  <div class="block">
+    <img :src="src" style="width: 100%; height: 100%;">
     <div v-for="image in imageParameters" :key="image.id">
       <div>
-        <div class="block">{{ image.id }} - {{ image.name }}</div>
-        <div class="block" v-if="image.favourite === true">Favourite</div>
-        <div class="block" v-else-if="image.favourite !== true">Not favourite</div>
+        <div>{{ image.id }} - {{ image.name }}</div>
+        <div v-if="image.favourite === true">Favourite</div>
+        <div v-else-if="image.favourite !== true">Not favourite</div>
       </div>
     </div>
   </div>
@@ -28,13 +28,13 @@ export default {
         .get('https://portal-tb.lynxx.co/api-test/image/list')
         .then(response => (this.imageParameters = response.data.filter((item) => item.id === this.$route.params.id)))
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
 <style lang="scss">
 .block {
-  text-align: center;
+  margin: auto;
+  width: 50%;
 }
 </style>
